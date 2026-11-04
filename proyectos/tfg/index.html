@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="es" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Estudio de transferibilidad · Lucas Maceda Lobato</title><meta name="description" content="Clasificación de mamografías y transferibilidad entre dominios de adquisición."><link rel="canonical" href="https://lucas-maceda.github.io/proyectos/tfg/"><link rel="alternate" hreflang="es" href="https://lucas-maceda.github.io/proyectos/tfg/"><link rel="alternate" hreflang="en" href="https://lucas-maceda.github.io/en/projects/tfg/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><!-- theme-color a mano (no hay token en CSS): el navegador lo lee antes de
+         aplicar estilos, así que debe ir literal. Dos variantes para que la barra
+         siga el tema claro/oscuro del sistema en vez de fijarse en negro. --><meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)"><meta property="og:title" content="Estudio de transferibilidad · Lucas Maceda Lobato"><meta property="og:description" content="Clasificación de mamografías y transferibilidad entre dominios de adquisición."><meta property="og:type" content="website"><meta property="og:locale" content="es_ES"><script>document.documentElement.classList.add('has-js');</script><script>
+      // Intro de primera visita: decide antes de pintar si se muestra (clase en <html>)
+      // para que no parpadee. Solo en la home y una vez por sesión; con reduced-motion no.
+      (function () {
+        var root = document.documentElement;
+        var p = location.pathname;
+        if (p !== '/' && p !== '/en/') return; // la intro solo existe en la home
+        var seen = null;
+        try { seen = sessionStorage.getItem('lml:intro'); } catch (e) {}
+        if (seen || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          root.classList.add('intro-done');
+        } else {
+          root.classList.add('intro-active');
+          try { sessionStorage.setItem('lml:intro', '1'); } catch (e) {}
+        }
+      })();
+    </script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.DBTVE09i.js"></script><link rel="stylesheet" href="/_astro/Base.Dj6nuqft.css"><style>.c-visual[data-astro-cid-utabsd57]{position:relative;width:100%;height:100%;overflow:hidden;container-type:inline-size;display:grid;place-items:start center;background:var(--color-bg);color:var(--color)}.c-visual[data-astro-cid-utabsd57][data-theme=light]{background:none;border:var(--border)}.c-visual_layer[data-astro-cid-utabsd57]{grid-area:1 / 1;display:grid;place-items:start center}.c-visual_layer--fine[data-astro-cid-utabsd57]{display:none}@container (width >= 800px){.c-visual_layer--normal[data-astro-cid-utabsd57]{display:none}.c-visual_layer--fine[data-astro-cid-utabsd57]{display:grid}}.c-visual[data-astro-cid-utabsd57] pre[data-astro-cid-utabsd57]{grid-area:1 / 1;margin:0;font-family:var(--font-mono);font-size:calc(100cqw / var(--cols) / .6);line-height:1.12;white-space:pre;user-select:none}.c-visual_base[data-astro-cid-utabsd57]{opacity:.4}.c-visual_peak[data-astro-cid-utabsd57]{color:var(--accent)}.c-visual[data-astro-cid-utabsd57][data-theme=accent] .c-visual_peak[data-astro-cid-utabsd57]{color:var(--color)}
+.c-project_hero[data-astro-cid-52n5wpc6]{position:relative;min-height:100svh;display:flex;overflow:hidden}.c-project_visual[data-astro-cid-52n5wpc6]{position:absolute;inset:0;z-index:0}.c-project_hero-inner[data-astro-cid-52n5wpc6]{position:relative;z-index:1;display:flex;flex-direction:column}.c-project_back[data-astro-cid-52n5wpc6]{align-self:flex-start;margin-bottom:var(--sp-medium);min-height:var(--size-touch);display:inline-flex;align-items:center;gap:.4em}.c-project_hero-main[data-astro-cid-52n5wpc6]{margin-top:auto}.c-project_title[data-astro-cid-52n5wpc6]{overflow-wrap:break-word}.c-project_tagline[data-astro-cid-52n5wpc6]{max-width:34ch;margin-top:var(--sp-medium)}.c-project_visit[data-astro-cid-52n5wpc6]{margin-top:var(--sp-medium)}.c-project_layout[data-astro-cid-52n5wpc6]{display:grid;gap:var(--sp-large)}.c-project_meta[data-astro-cid-52n5wpc6]{display:grid;align-content:start}.c-project_facts[data-astro-cid-52n5wpc6]{display:grid;border-top:var(--border)}.c-project_fact[data-astro-cid-52n5wpc6]{display:grid;gap:var(--sp-micro);padding:var(--sp-small) 0;border-bottom:var(--border)}.c-project_tags[data-astro-cid-52n5wpc6]{display:flex;flex-wrap:wrap;gap:var(--sp-micro)}.c-project_body[data-astro-cid-52n5wpc6]{max-width:42rem}.c-project_body[data-astro-cid-52n5wpc6] h2{font-family:var(--font-display);font-size:var(--fs-h3);font-weight:var(--weight-display);letter-spacing:var(--tracking-display);line-height:1.1;margin:var(--sp-large) 0 var(--sp-small)}.c-project_body[data-astro-cid-52n5wpc6] h2:first-child{margin-top:0}.c-project_body[data-astro-cid-52n5wpc6] p{margin:0 0 var(--sp-small)}.c-project_body[data-astro-cid-52n5wpc6] a{text-decoration:underline;text-underline-offset:.2em}.c-project_body[data-astro-cid-52n5wpc6] ul{list-style:outside;padding-left:1.4em;margin:0 0 var(--sp-small)}.c-project_body[data-astro-cid-52n5wpc6] li{margin:0 0 var(--sp-micro)}.c-project_body[data-astro-cid-52n5wpc6] code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9em}.c-project_body[data-astro-cid-52n5wpc6] blockquote{border-left:var(--border);padding-left:var(--sp-small);margin:var(--sp-small) 0;color:var(--color-muted)}.c-project_body[data-astro-cid-52n5wpc6] img{margin:var(--sp-small) 0}.c-project_next-section[data-astro-cid-52n5wpc6]{min-height:90svh;display:flex}.c-project_next-container[data-astro-cid-52n5wpc6]{display:flex;flex:1}.c-project_next[data-astro-cid-52n5wpc6]{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:var(--sp-small);border-top:var(--border);padding-top:var(--sp-medium)}.c-project_next-title[data-astro-cid-52n5wpc6]{max-width:16ch;transition:transform var(--duration) var(--ease-out)}@media(width>=1200px){.c-project_layout[data-astro-cid-52n5wpc6]{grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--sp-large);align-items:start}.c-project_meta[data-astro-cid-52n5wpc6]{position:sticky;top:var(--sp-medium)}}@media(hover:hover){.c-project_next[data-astro-cid-52n5wpc6]:hover .c-project_next-title[data-astro-cid-52n5wpc6],.c-project_next[data-astro-cid-52n5wpc6]:focus-visible .c-project_next-title[data-astro-cid-52n5wpc6]{transform:translate(.5em)}}
+</style><script type="module" src="/_astro/page.Bx2KSkeL.js"></script></head><body><div class="c-progress" aria-hidden="true"></div><header class="c-header" data-astro-cid-nen7h5rs><button class="c-header_btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle data-magnetic data-astro-cid-nen7h5rs><span class="u-sr-only" data-open data-astro-cid-nen7h5rs>Menú</span><span class="u-sr-only" data-close hidden data-astro-cid-nen7h5rs>Cerrar</span><span class="c-header_bars" aria-hidden="true" data-astro-cid-nen7h5rs><span class="c-header_bar" data-astro-cid-nen7h5rs></span><span class="c-header_bar" data-astro-cid-nen7h5rs></span></span></button><div class="c-header_panel" id="menu" data-menu data-astro-cid-nen7h5rs><nav class="c-header_nav" aria-label="Menú" data-astro-cid-nen7h5rs><ul class="c-header_list" data-astro-cid-nen7h5rs><li class="c-header_item t-h2" style="--i: 0" data-astro-cid-nen7h5rs><a href="/" class="c-header_link" data-menu-link data-astro-cid-nen7h5rs><span class="c-header_num t-label" aria-hidden="true" data-astro-cid-nen7h5rs>01</span><span class="c-header_label" data-roll data-astro-cid-nen7h5rs>Inicio</span></a></li><li class="c-header_item t-h2" style="--i: 1" data-astro-cid-nen7h5rs><a href="/#proyectos" class="c-header_link" data-menu-link data-astro-cid-nen7h5rs><span class="c-header_num t-label" aria-hidden="true" data-astro-cid-nen7h5rs>02</span><span class="c-header_label" data-roll data-astro-cid-nen7h5rs>Proyectos</span></a></li><li class="c-header_item t-h2" style="--i: 2" data-astro-cid-nen7h5rs><a href="/#hitos" class="c-header_link" data-menu-link data-astro-cid-nen7h5rs><span class="c-header_num t-label" aria-hidden="true" data-astro-cid-nen7h5rs>03</span><span class="c-header_label" data-roll data-astro-cid-nen7h5rs>Hitos</span></a></li><li class="c-header_item t-h2" style="--i: 3" data-astro-cid-nen7h5rs><a href="/ahora/" class="c-header_link" data-menu-link data-astro-cid-nen7h5rs><span class="c-header_num t-label" aria-hidden="true" data-astro-cid-nen7h5rs>04</span><span class="c-header_label" data-roll data-astro-cid-nen7h5rs>Ahora</span></a></li><li class="c-header_item t-h2" style="--i: 4" data-astro-cid-nen7h5rs><a href="/blog/" class="c-header_link" data-menu-link data-astro-cid-nen7h5rs><span class="c-header_num t-label" aria-hidden="true" data-astro-cid-nen7h5rs>05</span><span class="c-header_label" data-roll data-astro-cid-nen7h5rs>Posts</span></a></li><li class="c-header_item t-h2" style="--i: 5" data-astro-cid-nen7h5rs><a href="/#contacto" class="c-header_link" data-menu-link data-astro-cid-nen7h5rs><span class="c-header_num t-label" aria-hidden="true" data-astro-cid-nen7h5rs>06</span><span class="c-header_label" data-roll data-astro-cid-nen7h5rs>Hablemos</span></a></li></ul></nav><div class="c-header_foot" data-astro-cid-nen7h5rs><a href="/en/projects/tfg/" hreflang="en" lang="en" class="c-button" data-roll data-astro-cid-nen7h5rs>English</a></div></div></header><script type="module">var e;document.addEventListener(`astro:page-load`,()=>{e?.abort(),e=new AbortController;let{signal:t}=e,n=document.querySelector(`[data-menu-toggle]`),r=document.querySelector(`[data-menu]`);if(!n||!r)return;let i=n.closest(`.c-header`),a=document.querySelector(`main`),o=document.querySelector(`footer`),s=e=>{i.classList.toggle(`is-open`,e),n.setAttribute(`aria-expanded`,String(e)),n.querySelector(`[data-open]`).hidden=e,n.querySelector(`[data-close]`).hidden=!e,document.documentElement.style.overflow=e?`hidden`:``,a&&(a.inert=e),o&&(o.inert=e)},c=()=>{s(!0),r.querySelector(`[data-menu-link]`)?.focus()},l=(e=!0)=>{s(!1),e&&n.focus()};n.addEventListener(`click`,()=>{i.classList.contains(`is-open`)?l():c()},{signal:t}),r.querySelectorAll(`a[href]`).forEach(e=>{e.addEventListener(`click`,()=>l(!1),{signal:t})}),document.addEventListener(`astro:before-swap`,()=>{document.documentElement.style.overflow=``},{signal:t}),document.addEventListener(`keydown`,e=>{if(!i.classList.contains(`is-open`))return;if(e.key===`Escape`){l();return}if(e.key!==`Tab`)return;let t=[n,...Array.from(r.querySelectorAll(`a[href], button`))],a=t[0],o=t[t.length-1],s=document.activeElement,c=s!==null&&t.includes(s);e.shiftKey?c&&s!==a||(e.preventDefault(),o.focus()):c&&s!==o||(e.preventDefault(),a.focus())},{signal:t})});</script><main id="main"><section class="c-section c-project_hero" data-section-theme="accent" data-astro-cid-52n5wpc6><div class="c-project_visual" aria-hidden="true" data-astro-cid-52n5wpc6><div class="c-visual" data-theme="accent" role="img" aria-label="Estudio de transferibilidad" data-astro-cid-utabsd57><div class="c-visual_layer c-visual_layer--normal" style="--cols: 80" aria-hidden="true" data-astro-cid-utabsd57><pre class="c-visual_base" data-astro-cid-utabsd57>-==++++*****++++==--:::..          ...::---====+++===---::..                    
+==+++******++++==--:::..          ...:::---==========--::..                    .
++++++****++++===--:::..           ...::---===========--::..                  ..:
++++++++++++===---::...           ...:::---===========---::..               ..:--
+===========---:::...            ...:::---===+++++++====--:::..          ...::--=
+=====------::::...            ....::---===++++++++++++===---::....  .....::---==
+--:::::::::......           ....::---===+++**********++++===---::::...::::---===
+..............         ......:::---===+++***########****+++===----::::::::-----=
+                   .....:::::---===+++***#####%%%%#####****++===----::::::::----
+              ......::::-----===++++***###%%%%    %%%%###***+++==---::::::::::::
+           .....::::----=====++++****###%%%         %%%###**+++==---::..........
+         ...::::---====+++++++*****####%%            %%###**+++==--::....       
+        ..::---===++++*************####%%           %%####**++==--::..          
+      .::--===++++*******************####%%       %%%####**+++==--::..          
+    .::--=+++*****######******++++++*****###%%%%%%%#####***++==--::..           
+  ..:-==++**###########****++++======++++****##########****++==--::..           
+..:-==+**####%%%#####***+++===---------===+++*****####****+++==--::..           
+:--=++*###%%%%%%###***++==---::::::::::---==+++*****##*****++==--::..           
+-==+**###%%%%%###**++==--::...      ...::--==+++***#####***+++==-::..           
+=++**###%%%%###**+==--::..            ..::--=++***########**++==--:..          .
+++***#######***+==-::..                .::-==++**####%####***+==--:...         .
++++*********++==-::.                   .:--=++**##%%%%%%###**+==-::...         .
+=++++++++++===-::..                   .::-=++*##%%%   %%###*++=--::..           
+==========---::..                    .::-=++*##%%     %%##*++=--::..            
+----------:::..                     .:--=++*##%%     %%##*++=--:..              
+::::::::::....                    ..:--=++**##%%%%%%###**+==-::..               
+.............                   ..::--=++***########***++=--:..                 
+.............               ....::--===++*****##****+++=--::.                   
+     ......................::::----===++++*******+++==--::..                    
+     .......:::::::::::::::------=====++++++++++===---::..                     .
+    ....:::::-------------------==============----:::...                      ..
+  ....:::-----===============--------------::::::....                       ..::
+ ...:::---=====++++++=======-----:::::::........                         ...::--
+...:::--====++++++++++====---::::....                                ....:::---=
+..::---===+++++++++++===---::...                           .........:::::-----==
+.:::---===++++++++++===--::..                        .....::::::::----------====
+.:::---===++++++++===--::..                       ...:::-------=========--------
+..::---====+++++===---::..                      ..::---=====+++++=======--------
+..:::---==========--::..                      .::--===++++****+++++====---::::::
+ ..:::---=======---::..                     .::--==++**********+++===--:::....  
+  ..::----=====----::..                   ..:--==++**#######***++==--::..       
+  ..::----=====---:::..                 ..::-==++**########***++=--::.          
+  ..::---======----::..                ..:--=++***########**++==-::.            
+ ..::---========---:::..             ..::--==+***#######***+==-::.              
+..::--====+++====---::...           ..::--==++****###***++==--:.                
+.::--==++++++++===--:::...         ...::--==+++*******++==--:..                 
+:--==+++++++++++==---::...         ...::--===+++++++++==--::.                   
+-===+++*****++++==--:::...         ...:::--===========--::..                    
+==+++******++++==---::...           ...:::----=====----::..                     
+=++++****+++++==---::...             ...:::----------:::..                    .:
++++++++++++====--:::..                ...::::-------::::..                 ..::-
+=++++++=====---:::...                 ....:::::----:::::...              ..::--=
+=======-----::::...                   ....:::::-----::::::.....       ...:::--==
+------:::::::....                     ...:::::---------::::::..........::::--===
+:::............                     ....::::--------------::::::::::::::::----==
+                                  .....::::-------------------:::::::::::::-----
+               .....................::::::------========--------::::::::::::::::
+            ......:::::::::::::::::::::::-------=========-------::::::..........
+          ...::::---------::::::::::::::::-------=======-------::::........     
+        ..:::---=========-----::::::::::::::-----------------:::::....          
+      ..::--===++++++++====----:::::....::::::::------------::::....            
+    ..:--==+++*******+++===---:::............::::::-------:::::....             
+   .:--=++***######***++==--::...           ....:::::-----:::::...              
+ .::-=++**#########***+==--::..               ...:::::----:::::...              
+::-==+**###%%%%%###*++==-::.                  ...:::--------::::...             
+--=++*###%%%%%%##**++=-::.                    ..:::-----------:::...            
+==+**###%%%%%###*++=--:.                     ..::---========---:::...          .
+=++**########**++=--:..                     ..::--===+++++====--:::...         .
+++****###****++=--:..                      .::--==++++**++++===--::...         .
+++++*****+++==--::.                      ..:--=+++********+++==--::..          .
+===+++++===---::.                       .:--=++***#####***++==--::..            
+--====-----::...                      .::-==+***#######***++=--::..             
+::---::::::...                      .::-==++**########***++=--:..               
+:::::::......                    ..::--=++***########**++==-::..                
+............                  ..:::--==++****#####***++==--:..                  
+     ........................:::---===+++*********+++==--:..                    
+     ..........:::::::::::::-----=====+++++++++++===--::..                      
+    .....::::::-----------------================---:::..                      ..
+   ...::::------=============-----------------::::....                       ..:
+ ....:::---=======+=========------:::::::::.......                        ...::-
+...:::---====+++++++++====----::::......                               ...:::---
+..:::--====+++++++++++===---::...                              .......::::----==
+.:::---===++++++++++===--:::..                        ......:::::::::--------===
+.:::--====+++++++++==---::..                       ...::::------------------====
+.:::---===+++++++===--::..                      ..:::---================--------
+..:::--===========---::..                     ..::--===++++++++++++====----:::::
+...::---=========---::..                    ..::-==+++*********++++==---:::.....
+ ...::---=======---::..                    .::-==++***######***+++==--::..      
+  ..::----=====---:::..                  .::--=++***########**++==--:..         
+  ..::---======----::..                ..::-==++**########***++=--:..           
+ ..::---========---::...              ..:--==++**########**++=--:..             
+ .::---==========---::..            ...:--==++***#####***++==-:..               
+.::--===+++++++===--:::..          ...::--==+++********++==-::.                 
+:--===+++++++++===---::...         ...::--===++++++++++==-::..                  
+--==++++****++++==--:::...         ...::---====++++====--::.                    
+==++++******+++===--::...          ....::----=======---::..                     
+=++++*****++++===--::...            ....:::----------:::..                    ..
+++++++++++++===---::...              ....::::-------::::..                  ..:-
++++++++++====---::...                 ....:::::----:::::...               ..::-=
+=========----:::...                   ....:::::----::::::....          ...::--==
+</pre><pre class="c-visual_peak" data-astro-cid-utabsd57>                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                              %%%%                              
+                                           %%@@@@@%%                            
+                                         %%@@@@@@@%%%                           
+                                         %%@@@@@@@%%                            
+                                           %@@%%%%                              
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                   %%%                          
+                                                 %%%%%                          
+                                                %%%%%                           
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+</pre></div><div class="c-visual_layer c-visual_layer--fine" style="--cols: 160" aria-hidden="true" data-astro-cid-utabsd57><pre class="c-visual_base" data-astro-cid-utabsd57>-=====+++++++**********++++++++=====----:::::.....                    .....:::::-----========++++++=======-----::::....                                         
+====+++++++************+++++++=====----:::::......                   .....:::::------=====================----::::....                                         .
+===+++++++************+++++++=====----:::::.....                    ......:::::------====================-----:::....                                         ..
+=++++++++***********++++++++=====----:::::.....                     .....::::::-----=====================----::::....                                       ..::
+++++++++++*******+++++++++=====-----:::::.....                     ......:::::------=====================-----::::...                                     ...:::
+++++++++++++++++++++++++======-----::::.....                       .....::::::------=====================-----::::....                                 ....:::--
++++++++++++++++++++++======------:::::.....                       ......:::::------=======================-----::::.....                             ....:::----
++++++++++++++++++========------:::::.....                        ......:::::------=========++++++++========------::::....                          ....::::---==
+======================------::::::......                       .......:::::------=======++++++++++++++=======-----:::::.....                    .....::::----===
+=================--------:::::::......                        ......::::::-----=======+++++++++++++++++++======-----:::::......              ......:::::----====
+=========-------------:::::::.......                        .......:::::------======++++++++++++++++++++++++======-----:::::........   ..........:::::-----=====
+----------------::::::::::.........                       .......::::::-----======++++++++************++++++++======------::::::..............:::::::------=====
+----::::::::::::::::::...........                      ........:::::------=====+++++++********************+++++++======------::::::::......:::::::::------======
+::::::::::::::................                     .........::::::------=====++++++**************************+++++++======------:::::::::::::::::::--------=====
+...........................                   ...........:::::::-----======++++++*******################********++++++======-------::::::::::::::::----------===
+..........                                ...........::::::::------=====++++++*******#######################*******++++++======------:::::::::::::::------------
+                                      ..........:::::::::-------======++++++******##########%%%%%%%%##########*******+++++======-------:::::::::::::::::--------
+                                ............:::::::::--------======++++++******########%%%%%%%%%%%%%%%%%########******++++++=====-------::::::::::::::::::::::::
+                           ............:::::::::---------=======+++++++******#######%%%%%%%        %%%%%%%%#######*****++++++=====------::::::::::::::::::::::::
+                        ............:::::::---------=========+++++++*******#######%%%%%               %%%%%%#######*****+++++=====-----::::::::.................
+                      .........::::::::--------==========+++++++++*******#######%%%%%                   %%%%%######*****+++++=====-----:::::....................
+                    .......::::::::------==========++++++++++++********########%%%%                      %%%%######******++++=====----:::::.....................
+                  ......:::::::------========++++++++++++++***********########%%%%                       %%%%######*****+++++====----:::::.......               
+                .....:::::--------======+++++++++++++****************#########%%%%                      %%%%%######*****++++=====----::::.....                  
+               ....::::------=======++++++++**************************########%%%%                     %%%%%#######*****++++====----::::....                    
+             ...::::-----=======+++++++********************************#########%%%                   %%%%%#######*****++++====----::::....                     
+           ...::::----=====++++++++***************************************#######%%%%              %%%%%%%#######*****+++++====----::::....                     
+         ...:::----====++++++***********#######*******************************######%%%%%  %%%%%%%%%%%%%########******++++====----::::....                      
+        ..:::----===+++++**********#############************++++++++++++*********#######%%%%%%%%%%%%%###########*****+++++====----:::....                       
+      ...::---====++++******###################*********++++++++++++++++++++++*******##########################******+++++====---::::....                       
+    ...::---===++++*****######################*******+++++++++============++++++++********####################*******++++====----::::....                       
+  ...:::--===++++****#######################******+++++++=======================++++++*********##############*******+++++====----::::....                       
+...:::--===+++****#######%%%%%%###########******+++++======------------------======+++++++*********#########********+++++====----::::....                       
+.:::---==++++***######%%%%%%%%%#########*****+++++=====-------::::::::::::-------=====++++++**********#####**********+++++====---::::....                       
+::---===+++***######%%%%%%%%%%%######******++++=====-----:::::::::::::::::::::-----=====++++++*********#####*********+++++====----:::....                       
+---===+++****#####%%%%%%%%%%%%#####*****++++=====----:::::.................::::::----====+++++*********#######********++++====----:::....                       
+--===+++****#####%%%%%%%%%%%#####****+++++====----::::......            ......::::----====+++++*******##########******+++++====---::::...                       
+===++++***######%%%%%%%%%%#####****++++====---::::.....                    ....::::----===+++++******############******++++====---::::....                     .
+==++++****######%%%%%%%######****+++====---::::....                         ....:::----===++++*****################*****++++===----:::....                    ..
+=++++****##################****++++==---::::....                             ...:::----===++++****##################****++++===----:::.....                  ...
+++++******##############*****+++===---:::....                                ...:::---===++++****#########%#########*****+++===----:::.....                  ...
+++++*******#########******++++===---:::...                                   ...:::---===+++****######%%%%%%%%%######****+++===---::::.....                  ...
++++++******************+++++===---:::...                                     ..:::---===+++****#####%%%%%%%%%%%%#####****+++===---:::......                  ...
+++++++**************+++++====---:::...                                      ...::---===+++***#####%%%%%%  %%%%%%#####***++++===--::::.....                    ..
+=+++++++++++++++++++++=====---::::...                                      ...:::--===+++***####%%%%%       %%%%#####***+++===---::::....                      .
+===+++++++++++++++======----::::...                                       ...:::--===+++***####%%%%         %%%%####***+++===---::::....                        
+====================------::::...                                        ...:::--===+++***####%%%%         %%%%####***+++===---::::....                         
+-===============-------:::::....                                        ...::---===+++***####%%%%         %%%%####***+++===---::::....                          
+-------------------::::::.....                                         ...::---===+++***####%%%%         %%%%####***+++===---:::....                            
+---------------::::::::.....                                         ...:::---===+++***#####%%%%%     %%%%%####***+++====---:::....                             
+::::::::::::::::::::.......                                         ...:::---===+++****#####%%%%%%%%%%%%#####****+++===---::::...                               
+::::::::::::::::..........                                         ...:::---===+++*****######%%%%%%%%######****++++===---:::...                                 
+.........................                                       ....::::---===++++*****#################*****++++===---:::....                                  
+........................                                     .....::::----====++++******#############******++++===----:::...                                    
+.........................                               .......:::::----=====+++++*********#####********+++++===----:::...                                      
+      .........................                  ..........::::::-----======++++++*******************+++++====----:::....                                       
+          ............................................::::::::-------======++++++++**************++++++=====----:::....                                         
+          ................................:::::::::::::::::--------========+++++++++++++++++++++++++=====----::::....                                           
+         ..............::::::::::::::::::::::::::::::------------===========+++++++++++++++++++=======-----::::....                                           ..
+        ...........:::::::::::::::::----------------------------=================================------:::::.....                                            ...
+       .........::::::::::-------------------------------------============================---------:::::......                                            ....:
+     ........::::::::--------------======================-------------------------------------::::::::......                                              ....::
+    .......:::::::---------===============================---------------------------::::::::::::........                                              .....::::
+   ......:::::::-------=================================----------------::::::::::::::::::............                                               .....::::--
+</pre><pre class="c-visual_peak" data-astro-cid-utabsd57>                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                           %%%%%%%%                                                             
+                                                                                       %%%%%%%%%%%%%%%                                                          
+                                                                                     %%%%%@@@@@@@@@%%%%%                                                        
+                                                                                   %%%%@@@@@@@@@@@@@%%%%%                                                       
+                                                                                  %%%%@@@@@@@@@@@@@@%%%%%                                                       
+                                                                                  %%%@@@@@@@@@@@@@@@%%%%                                                        
+                                                                                  %%%@@@@@@@@@@@@@@%%%%                                                         
+                                                                                   %%%@@@@@@@@@@%%%%%%                                                          
+                                                                                     %%@@@@%%%%%%%%                                                             
+                                                                                         %%                                                                     
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                        %%                                                      
+                                                                                                     %%%%%%%                                                    
+                                                                                                   %%%%%%%%%                                                    
+                                                                                                  %%%%%%%%%                                                     
+                                                                                                 %%%%%%%%%                                                      
+                                                                                                %%%%%%%%%                                                       
+                                                                                                 %%%%%                                                          
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                                                                                
+</pre></div></div></div><div class="o-container c-project_hero-inner" data-astro-cid-52n5wpc6><a href="/#proyectos" class="c-link t-label c-project_back" data-reveal data-astro-cid-52n5wpc6><span aria-hidden="true" data-astro-cid-52n5wpc6>←</span> Volver</a><div class="c-project_hero-main" data-astro-cid-52n5wpc6><h1 class="t-huge c-project_title" data-split data-ascii aria-label="Estudio de transferibilidad" data-astro-cid-52n5wpc6>Estudio de transferibilidad</h1><p class="t-medium c-project_tagline" data-reveal style="--reveal-delay: 0.1" data-astro-cid-52n5wpc6>Clasificación de mamografías y transferibilidad entre dominios de adquisición.</p></div></div></section><section class="c-section c-project_content" data-section-theme="light" data-astro-cid-52n5wpc6><div class="o-container" data-astro-cid-52n5wpc6><div class="c-project_layout" data-astro-cid-52n5wpc6><aside class="c-project_meta" data-astro-cid-52n5wpc6><dl class="c-project_facts" data-astro-cid-52n5wpc6><div class="c-project_fact" data-astro-cid-52n5wpc6><dt class="t-label" data-ascii data-astro-cid-52n5wpc6>Rol</dt><dd data-astro-cid-52n5wpc6>Autor</dd></div><div class="c-project_fact" data-astro-cid-52n5wpc6><dt class="t-label" data-ascii data-astro-cid-52n5wpc6>Año</dt><dd data-astro-cid-52n5wpc6>2026 — 2027</dd></div><div class="c-project_fact" data-astro-cid-52n5wpc6><dt class="t-label" data-ascii data-astro-cid-52n5wpc6>Estado</dt><dd data-astro-cid-52n5wpc6>En curso</dd></div><div class="c-project_fact" data-astro-cid-52n5wpc6><dt class="t-label" data-ascii data-astro-cid-52n5wpc6>Etiquetas</dt><dd data-astro-cid-52n5wpc6><ul class="c-project_tags" data-astro-cid-52n5wpc6><li class="t-label" data-ascii="code" data-astro-cid-52n5wpc6>Deep Learning</li><li class="t-label" data-ascii="code" data-astro-cid-52n5wpc6>Visión por computador</li><li class="t-label" data-ascii="code" data-astro-cid-52n5wpc6>Medicina</li><li class="t-label" data-ascii="code" data-astro-cid-52n5wpc6>PyTorch</li></ul></dd></div></dl></aside><article class="c-project_body" data-astro-cid-52n5wpc6><h2 id="la-pregunta">La pregunta</h2>
+<p>¿Un modelo entrenado con mamografías digitalizadas (película escaneada) funciona con mamografías digitales directas, y al revés? Esa es la pregunta que guía mi trabajo de fin de grado: «Transferibilidad de modelos de clasificación de mamografías entre dominios de adquisición (digitalizado vs. digital)».</p>
+<h2 id="qué-hago">Qué hago</h2>
+<p>Entreno redes convolucionales con PyTorch y timm en el servidor de GPUs de la universidad, sobre imágenes DICOM y con varias semillas por experimento para que los resultados sean reproducibles. Comparo el rendimiento dentro de cada dominio y al cruzar de uno a otro.</p>
+<h2 id="dónde-está">Dónde está</h2>
+<p>El trabajo va de septiembre de 2026 a enero de 2027 y cierra el Grado en Ingeniería Informática del Software en la EII de Oviedo. Es un proyecto personal de investigación: puro aprendizaje y ganas de medir las cosas bien.</p>
+</article></div></div></section><section class="c-section c-project_next-section" data-section-theme="dark" data-astro-cid-52n5wpc6><div class="o-container c-project_next-container" data-astro-cid-52n5wpc6><a href="/proyectos/motyo/" class="c-project_next" data-cursor="Ver" data-reveal data-astro-cid-52n5wpc6><span class="t-label" data-astro-cid-52n5wpc6>Siguiente proyecto</span><span class="t-h1 c-project_next-title" data-astro-cid-52n5wpc6>Motyo</span></a></div></section></main><footer id="contacto" class="c-section" data-section-theme="dark" data-astro-cid-jo6i4kqk><div class="c-footer_hero" data-astro-cid-jo6i4kqk><figure class="c-footer_backdrop" data-media-ascii="backdrop" aria-hidden="true" data-astro-cid-jo6i4kqk><video src="/media/peces.mp4" muted loop playsinline preload="none" tabindex="-1" data-astro-cid-jo6i4kqk></video><canvas data-astro-cid-jo6i4kqk></canvas></figure><div class="o-container" data-astro-cid-jo6i4kqk><a href="mailto:lucasmacedalobato@gmail.com" class="t-huge c-footer_cta" data-magnetic data-cursor="Escribir" data-astro-cid-jo6i4kqk><span data-split="chars" data-ascii data-astro-cid-jo6i4kqk>¿Hablamos?</span></a></div><div class="c-marquee c-footer_marquee" style="--marquee-duration: 45s" data-astro-cid-jo6i4kqk><div class="c-marquee_track" data-astro-cid-jo6i4kqk><span class="t-huge c-footer_marquee_text" data-astro-cid-jo6i4kqk>Construyamos algo juntos ✳</span><span class="t-huge c-footer_marquee_text" aria-hidden="true" data-astro-cid-jo6i4kqk>Construyamos algo juntos ✳</span></div></div></div><div class="o-container" data-astro-cid-jo6i4kqk><div class="o-grid c-footer_grid" data-astro-cid-jo6i4kqk><nav class="c-footer_col" aria-label="Menú" data-reveal style="--reveal-delay: 0.05" data-astro-cid-jo6i4kqk><p class="t-label c-footer_head" data-line data-ascii data-astro-cid-jo6i4kqk>Menú</p><ul class="c-footer_list" data-astro-cid-jo6i4kqk><li data-astro-cid-jo6i4kqk><a href="/#proyectos" class="c-link" data-roll data-astro-cid-jo6i4kqk>Proyectos</a></li><li data-astro-cid-jo6i4kqk><a href="/#hitos" class="c-link" data-roll data-astro-cid-jo6i4kqk>Hitos</a></li><li data-astro-cid-jo6i4kqk><a href="/ahora/" class="c-link" data-roll data-astro-cid-jo6i4kqk>Ahora</a></li><li data-astro-cid-jo6i4kqk><a href="/#posts" class="c-link" data-roll data-astro-cid-jo6i4kqk>Posts</a></li></ul></nav><div class="c-footer_col" data-reveal style="--reveal-delay: 0.1" data-astro-cid-jo6i4kqk><p class="t-label c-footer_head" data-line data-ascii data-astro-cid-jo6i4kqk>Redes</p><ul class="c-footer_list" data-astro-cid-jo6i4kqk><li data-astro-cid-jo6i4kqk><a href="https://www.linkedin.com/in/lucasmaceda/" class="c-link" data-roll target="_blank" rel="noopener" data-astro-cid-jo6i4kqk>LinkedIn</a></li><li data-astro-cid-jo6i4kqk><a href="mailto:lucasmacedalobato@gmail.com" class="c-link" data-roll data-astro-cid-jo6i4kqk>lucasmacedalobato@gmail.com</a></li></ul></div><div class="c-footer_col" data-reveal style="--reveal-delay: 0.15" data-astro-cid-jo6i4kqk><p class="t-label c-footer_head" data-line data-ascii data-astro-cid-jo6i4kqk>Idioma</p><ul class="c-footer_list" data-astro-cid-jo6i4kqk><li data-astro-cid-jo6i4kqk><a href="/en/projects/tfg/" hreflang="en" lang="en" class="c-link" data-roll data-astro-cid-jo6i4kqk>English</a></li><li data-astro-cid-jo6i4kqk><a href="#main" class="c-link" data-roll data-astro-cid-jo6i4kqk>Volver arriba</a></li></ul></div></div><div class="c-footer_bottom u-line" data-reveal style="--reveal-delay: 0.1" data-astro-cid-jo6i4kqk><p data-astro-cid-jo6i4kqk>© 2026 Lucas Maceda Lobato</p><p class="t-muted" data-astro-cid-jo6i4kqk>Hecho a mano con Astro.</p><time class="t-label c-footer_time" data-footer-time data-locale="es-ES" aria-label="Hora local en Asturias" data-astro-cid-jo6i4kqk>--:--</time></div></div></footer><script type="module">var e;function t(){let e=document.querySelector(`[data-footer-time]`);e&&(e.textContent=new Intl.DateTimeFormat(e.dataset.locale||`es-ES`,{timeZone:`Europe/Madrid`,hour:`2-digit`,minute:`2-digit`}).format(new Date))}document.addEventListener(`astro:page-load`,()=>{t(),e=window.setInterval(t,3e4)}),document.addEventListener(`astro:before-swap`,()=>{e!==void 0&&window.clearInterval(e)});</script><script type="module" src="/_astro/Base.astro_astro_type_script_index_0_lang.Bp2bY1-r.js"></script><div class="c-curtain" aria-hidden="true"></div></body></html>
